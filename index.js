@@ -1,12 +1,11 @@
-var http = require('http');
-var express = require("express");
-var path    = require("path");
-var app     = express();
+var express = require('express');
+var path = require('path');
+var app = express();
 
-app.get('/',function(req,res){
-  res.sendFile(path.join(__dirname+'/index.html'));
-  //__dirname : It will resolve to your project folder.
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Listen for requests
+var server = app.listen(process.env.PORT || 3000, function() {
+  var port = server.address().port;
+  console.log('Magic happens on port ' + port);
 });
-
-app.listen(process.env.PORT);
-// http.createServer().listen(process.env.PORT);
