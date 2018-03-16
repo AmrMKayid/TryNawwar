@@ -1,6 +1,12 @@
-var http = require('http')
+var http = require('http');
+var express = require("express");
+var path    = require("path");
+var app     = express();
 
-http.createServer(function (request, response) {
-    response.writeHead(200, {"Content-Type": "text/plain"})
-    response.end("Hello, World!\n")
-}).listen(process.env.PORT)
+app.get('/',function(req,res){
+  res.sendFile(path.join(__dirname+'/index.html'));
+  //__dirname : It will resolve to your project folder.
+});
+
+app.listen(process.env.PORT);
+http.createServer().listen(process.env.PORT);
